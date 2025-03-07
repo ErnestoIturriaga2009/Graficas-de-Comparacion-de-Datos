@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        //Crear funcion para Crear tabla
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Indicador', 'UTEL', 'UVEG'],
+                ['Matriculados', 37248, 21426],
+                ['% Mujeres Matriculadas', 59, 50.4],
+                ['Egresados', 7402, 2087],
+                ['Graduados', 980, 36],
+                ['Titulados', 3722, 765]
+            ]);
+
+            //Comparamos datos UTEL-UVEG
+            var options = {
+                title: 'Comparación de Universidades (2022)',
+                chartArea: {width: '50%'},
+                hAxis: {
+                    title: 'Cantidad',
+                    minValue: 0
+                },
+                vAxis: {
+                    title: 'Indicadores'
+                },
+                colors: ['#1b9e77', '#3498db'] // Verde para UTEL, Azul Cielo para UVEG
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Indicador', 'UTEL - Hombres', 'UTEL - Mujeres', 'UVEG - Hombres', 'UVEG - Mujeres'],
+            ['Egresados', 3809, 3593, 1146, 941],
+            ['Graduados', 56, 924, 15, 21],
+            ['Titulados', 2038, 1684, 430, 335]
+        ]);
+
+        var options = {
+            title: 'Comparación de la Situación Estudiantil (2022)',
+            chartArea: {width: '60%'},
+            hAxis: {
+                title: 'Número de Estudiantes',
+                minValue: 0
+            },
+            vAxis: {
+                title: 'Indicadores'
+            },
+            series: {
+                0: { color: '#1b9e77' }, // Verde para UTEL - Hombres
+                1: { color: '#66c2a5' }, // Verde claro para UTEL - Mujeres
+                2: { color: '#3498db' }, // Azul cielo para UVEG - Hombres
+                3: { color: '#a6cee3' }  // Azul claro para UVEG - Mujeres
+            }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+    }
+</script>
+</head>
+<body>
+    <h2>Comparación de UTEL vs UVEG</h2>
+    <div id="chart_div" style="width: 800px; height: 500px;"></div>
+</body>
+</html>
